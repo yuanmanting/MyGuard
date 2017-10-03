@@ -3,7 +3,7 @@ package com.me.android.myguard.m1home;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.SystemClock;
+//import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -35,6 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         gv_home.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.print(i);
                 switch (i) {
                     case 0:
                         if (isSetupPassword()) {
@@ -55,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK){
-            if((SystemClock.currentThreadTimeMillis()-mExitTime)<2000){
+            if((System.currentTimeMillis()-mExitTime)<2000){
                 System.exit(0);
             }else{
                 Toast.makeText(this,"再按一次退出程序",Toast.LENGTH_LONG).show();
@@ -103,13 +104,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void comfirm() {
                 if(TextUtils.isEmpty(mInPswdDialog.getPassword())){
-                    Toast.makeText(HomeActivity.this,"密码不能为空!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(HomeActivity.this,"密码不能为空!",0).show();
                 }else if(password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))){
                     mInPswdDialog.dismiss();
                     Toast.makeText(HomeActivity.this,"可以进入手机防盗模块",Toast.LENGTH_LONG).show();
                 }else{
                     mInPswdDialog.dismiss();
-                    Toast.makeText(HomeActivity.this,"密码有误，请重新输入",Toast.LENGTH_LONG).show();
+                    Toast.makeText(HomeActivity.this,"密码有误，请重新输入",0).show();
                 }
             }
 
