@@ -7,7 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.me.android.myguard.R;
+import cn.edu.gdmec.android.mobileguard.R;
+
 
 /**
  * Created by HP on 2017/9/24.

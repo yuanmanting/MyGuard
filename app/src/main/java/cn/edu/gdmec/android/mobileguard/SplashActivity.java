@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.me.android.myguard.R;
+
 
 import cn.edu.gdmec.android.mobileguard.m1home.utils.MyUtils;
 import cn.edu.gdmec.android.mobileguard.m1home.utils.VersionUpdateUtils;

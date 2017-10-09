@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.me.android.myguard.R;
+import cn.edu.gdmec.android.mobileguard.R;
 
 
 /**

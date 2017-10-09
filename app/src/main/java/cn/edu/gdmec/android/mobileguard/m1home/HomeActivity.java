@@ -3,7 +3,6 @@ package cn.edu.gdmec.android.mobileguard.m1home;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-//import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -12,11 +11,13 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import com.me.android.myguard.R;
+import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1home.adapter.HomeAdapter;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetUpPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
+
+//import android.os.SystemClock;
 
 public class HomeActivity extends AppCompatActivity {
     private GridView gv_home;
