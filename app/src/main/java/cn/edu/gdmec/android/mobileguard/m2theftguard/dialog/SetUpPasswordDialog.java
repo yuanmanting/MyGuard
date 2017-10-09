@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.me.android.myguard.R;
+import cn.edu.gdmec.android.mobileguard.R;
+
 
 /**
  * Created by Administrator on 2017/9/28.
@@ -47,7 +48,7 @@ public class SetUpPasswordDialog extends Dialog implements View.OnClickListener 
         initView();
     }
   public SetUpPasswordDialog(@NonNull Context context){
-    super(context,R.style.dialog_custom);
+    super(context, R.style.dialog_custom);
   }
     private void initView() {
         mTitleTV=(TextView)findViewById(R.id.tv_setuppwd_title);
