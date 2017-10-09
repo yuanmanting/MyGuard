@@ -1,4 +1,4 @@
-package com.me.android.myguard.m1home.utils;
+package cn.edu.gdmec.android.mobileguard.m1home.utils;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;

@@ -1,4 +1,4 @@
-package com.me.android.myguard.m1home.adapter;
+package cn.edu.gdmec.android.mobileguard.m1home.adapter;
 
 import android.content.Context;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.me.android.myguard.m1home.utils;
+package cn.edu.gdmec.android.mobileguard.m1home.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -9,8 +9,8 @@ import android.os.Message;
 import android.widget.Toast;
 
 import com.me.android.myguard.R;
-import com.me.android.myguard.m1home.HomeActivity;
-import com.me.android.myguard.m1home.entity.VersionEntity;
+import cn.edu.gdmec.android.mobileguard.m1home.HomeActivity;
+import cn.edu.gdmec.android.mobileguard.m1home.entity.VersionEntity;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
