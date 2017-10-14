@@ -37,14 +37,14 @@
             android:id="@+id/tv_lostfind_protectstauts"
             style="@style/textview16sp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
             android:text="防盗保护是否开启"
             android:textColor="@color/purple" />
         <ToggleButton
+            android:id="@+id/togglebtn_lostfind"
             android:layout_width="70dp"
             android:layout_height="30dp"
-            android:id="@+id/togglebtn_lostfind"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
@@ -57,14 +57,15 @@
         android:layout_height="1.0px"
         android:background="#10000000"/>
     <RelativeLayout
+        android:id="@+id/rl_inter_setup_wizard"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:id="@+id/rl_inter_setup_wizard">
+       >
         <TextView
             style="@style/textview16sp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
             android:text="重新进入设置向导"
             android:textColor="@color/purple"/>
         <ImageView
@@ -149,8 +150,8 @@
             <TextView
                 style="@style/textview16sp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
                 android:drawableLeft="@drawable/lock_screen_icon_small"
                 android:drawablePadding="5dp"
                 android:text="远程锁屏"
@@ -171,8 +172,8 @@
             <TextView
                 style="@style/textview16sp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
                 android:drawableLeft="@drawable/delete_data_small"
                 android:drawablePadding="5dp"
                 android:text="远程删除数据"

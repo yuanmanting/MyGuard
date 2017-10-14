@@ -50,7 +50,7 @@ public abstract class BaseSetUpActivity extends AppCompatActivity {
             public boolean onFling(MotionEvent e1,MotionEvent e2,float velocityX,float velocityY){
 
                 if(Math.abs(velocityX)<200){
-                    Toast.makeText(getApplicationContext(),"无效动作，移动太慢",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"无效动作，移动太慢",Toast.LENGTH_SHORT).show();
                     return true;
                 }
                 if((e2.getRawX()-e1.getRawX())>200){
