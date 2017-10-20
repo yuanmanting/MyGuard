@@ -1,68 +1,64 @@
 package cn.edu.gdmec.android.mobileguard.m2theftguard.adapter;
 
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import java.util.List;
+
+import cn.edu.gdmec.android.mobileguard.R;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
 
 /**
  * Created by Administrator on 2017/10/19.
  */
 
 public class ContactAdapter extends BaseAdapter {
-    /**
-     * How many items are in the data set represented by this Adapter.
-     *
-     * @return Count of items.
-     */
+    private List<ContactInfo> contactInfos;
+    private Context context;
+    public ContactAdapter(List<ContactInfo> contactInfos,Context context){
+        super();
+        this.contactInfos=contactInfos;
+        this.context=context;
+    }
     @Override
     public int getCount() {
-        return 0;
+        return contactInfos.size();
     }
 
-    /**
-     * Get the data item associated with the specified position in the data set.
-     *
-     * @param position Position of the item whose data we want within the adapter's
-     *                 data set.
-     * @return The data at the specified position.
-     */
     @Override
-    public Object getItem(int position) {
-        return null;
+    public Object getItem(int i) {
+        return contactInfos.get(i);
     }
 
-    /**
-     * Get the row id associated with the specified position in the list.
-     *
-     * @param position The position of the item within the adapter's data set whose row id we want.
-     * @return The id of the item at the specified position.
-     */
     @Override
-    public long getItemId(int position) {
-        return 0;
+    public long getItemId(int i) {
+        return i;
     }
 
-    /**
-     * Get a View that displays the data at the specified position in the data set. You can either
-     * create a View manually or inflate it from an XML layout file. When the View is inflated, the
-     * parent View (GridView, ListView...) will apply default layout parameters unless you use
-     * {@link LayoutInflater#inflate(int, ViewGroup, boolean)}
-     * to specify a root view and to prevent attachment to the root.
-     *
-     * @param position    The position of the item within the adapter's data set of the item whose view
-     *                    we want.
-     * @param convertView The old view to reuse, if possible. Note: You should check that this view
-     *                    is non-null and of an appropriate type before using. If it is not possible to convert
-     *                    this view to display the correct data, this method can create a new view.
-     *                    Heterogeneous lists can specify their number of view types, so that this View is
-     *                    always of the right type (see {@link #getViewTypeCount()} and
-     *                    {@link #getItemViewType(int)}).
-     * @param parent      The parent that this view will eventually be attached to
-     * @return A View corresponding to the data at the specified position.
-     */
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+    public View getView(int i, View view, ViewGroup viewGroup) {
+      ViewHolder holder=null;
+        if(view==null){
+            view=View.inflate(context, R.layout.item_list_contact_select,null);
+            holder=new ViewHolder();
+            holder.mNameTV=(TextView)view.findViewById(R.id.tv_name);
+            holder.mPhoneTV=(TextView)view.findViewById(R.id.tv_phone);
+            view.setTag(holder);
+        }else{
+            holder=(ViewHolder)view.getTag();
+        }
+        holder.mNameTV.setText(contactInfos.get(i).name);
+        holder.mPhoneTV.setText(contactInfos.get(i).phone);
+        return view;
+    }
+    static class ViewHolder{
+        TextView mNameTV;
+        TextView mPhoneTV;
+
     }
 }
