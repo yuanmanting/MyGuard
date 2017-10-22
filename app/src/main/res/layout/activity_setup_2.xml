@@ -47,8 +47,7 @@
                android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:lineSpacingMultiplier="1.5"
-                android:text="绑定SIM卡后，当再次重启手机时，若手机SIM卡信息发生变化，
-                手机卫士会自动发送报警短信给安全号码！"
+                android:text="绑定SIM卡后，当再次重启手机时，若手机SIM卡信息发生变化，手机卫士会自动发送报警短信给安全号码！"
                 android:textColor="@color/purple"
                 android:textScaleX="1.1"/>
 
