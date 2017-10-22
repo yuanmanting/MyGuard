@@ -24,7 +24,6 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public  void run() {
                 super.run();
-                
                 versionUpdateUtils.getCloudVersion();
                 //xiugai
             }
