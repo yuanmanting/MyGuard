@@ -65,7 +65,7 @@ public abstract class BaseSetUpActivity extends AppCompatActivity {
                 }
                 return super.onFling(e1,e2,velocityX,velocityY);
             }
-
+    //tigiao
         });
 
    }
