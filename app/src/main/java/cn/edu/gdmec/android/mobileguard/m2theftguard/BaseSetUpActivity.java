@@ -20,7 +20,7 @@ public abstract class BaseSetUpActivity extends AppCompatActivity {
     //抽象方法 显示后-
     public abstract void showPre();
 //    用手势识别器去识别触控事件
-
+//wuyu
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         mGestureDetector.onTouchEvent(event);
