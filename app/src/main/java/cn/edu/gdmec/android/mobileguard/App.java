@@ -37,6 +37,7 @@ public class App extends Application {
             if (bindsim.equals(realsim)) {
                 Log.i("", "sim卡未发生变化，还是您的手机");
 
+
             } else {
                 Log.i("", "SIM卡变化了");
                 //由于系统版本的原因，这里的发短信可能与其他手机版本不兼容
