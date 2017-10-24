@@ -44,6 +44,5 @@ public class HomeAdapter extends BaseAdapter{
         iv_icon.setImageResource(imageId[i]);
         tv_name.setText(names[i]);
         return view1;
-
     }
 }
