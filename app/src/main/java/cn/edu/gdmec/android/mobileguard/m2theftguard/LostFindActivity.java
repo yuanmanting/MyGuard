@@ -14,7 +14,7 @@ import android.widget.ToggleButton;
 import cn.edu.gdmec.android.mobileguard.R;
 
 public class LostFindActivity extends AppCompatActivity implements View.OnClickListener{
- private TextView mSafePhoneTV;
+    private TextView mSafePhoneTV;
     private RelativeLayout mInterSetupRL;
     private SharedPreferences msharedPreferences;
     private ToggleButton mToggleButton;
@@ -37,6 +37,7 @@ public class LostFindActivity extends AppCompatActivity implements View.OnClickL
         TextView mTitleTV=(TextView) findViewById(R.id.tv_title);
         mTitleTV.setText("手机防盗");
         ImageView mLeftImgv=(ImageView) findViewById(R.id.imgv_leftbtn);
+        mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
         findViewById(R.id.rl_titlebar).setBackgroundColor(
                 getResources().getColor(R.color.purple));
