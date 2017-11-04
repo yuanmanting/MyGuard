@@ -37,6 +37,7 @@ public class InterceptSmsReceiver extends BroadcastReceiver {
             Log.d("--------","onReceive:"+mode);
             if(mode==2||mode==3){
                 abortBroadcast();
+                //jdit
             }
         }
 
