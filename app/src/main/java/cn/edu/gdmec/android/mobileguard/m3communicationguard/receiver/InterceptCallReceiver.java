@@ -40,9 +40,9 @@ public class InterceptCallReceiver extends BroadcastReceiver {
             switch (tManager.getCallState()){
                 case TelephonyManager.CALL_STATE_RINGING:
                     mIncomingNumber=intent.getStringExtra("incoming_number");
-                    if(mIncomingNumber==null){
-                        return;
-                    }
+                   // if(mIncomingNumber==null) {
+                      //  return;
+                   // }
                     int blackContactMode=dao.getBlackContactMode(mIncomingNumber);
                     if(blackContactMode==1||blackContactMode==3){
                         Uri uri= Uri.parse("content://call_log/calls");

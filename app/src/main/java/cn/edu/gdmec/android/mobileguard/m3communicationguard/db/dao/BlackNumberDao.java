@@ -23,6 +23,7 @@ public class BlackNumberDao {
     public BlackNumberDao(Context context){
         super();
         blackNumberOpenHelper=new BlackNumberOpenHelper(context,"blackNumber.db",null,1);
+
     }
     public boolean add(BlackContactInfo blackContactInfo){
         SQLiteDatabase db=blackNumberOpenHelper.getWritableDatabase();

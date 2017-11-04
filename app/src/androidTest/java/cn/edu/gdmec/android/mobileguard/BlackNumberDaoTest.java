@@ -29,7 +29,8 @@ public class BlackNumberDaoTest {
     private BlackNumberDao dao;
     @Before
     public void setUp(){
-        context= InstrumentationRegistry.getTargetContext();
+       context= InstrumentationRegistry.getTargetContext();
+
         dao=new BlackNumberDao(context);
     }
     @Test

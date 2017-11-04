@@ -80,7 +80,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
                  if (mSmsCB.isChecked()& mTelCB.isChecked()){
                      blackContactInfo.mode=3;
 
-                 }else if (mSmsCB.isChecked()& mTelCB.isChecked()){
+                 }else if (mSmsCB.isChecked()& !mTelCB.isChecked()){
                      blackContactInfo.mode=2;
                  }else if(!mSmsCB.isChecked()& mTelCB.isChecked()){
                      blackContactInfo.mode=1;

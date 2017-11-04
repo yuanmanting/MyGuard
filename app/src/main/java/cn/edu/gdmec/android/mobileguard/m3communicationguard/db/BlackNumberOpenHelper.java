@@ -19,10 +19,10 @@ public class BlackNumberOpenHelper extends SQLiteOpenHelper{
         return instance;
     }
     public BlackNumberOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-        this.DB_NAME=name;
-        this.VERSION=version;
-    }
+      super(context, name, factory, version);
+      this.DB_NAME=name;
+      this.VERSION=version;
+ }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
