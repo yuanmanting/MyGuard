@@ -34,6 +34,8 @@ public class BlackNumberDaoTest {
     }
     @Test
     public void t1Add() throws Exception{
+        //添加一行
+        BlackNumberDao dao=new BlackNumberDao(context);
         Random random=new Random(8979);
         for (long i=1;i<30;i++){
             BlackContactInfo info=new BlackContactInfo();
@@ -41,6 +43,15 @@ public class BlackNumberDaoTest {
             info.contactName="zhansan"+i;
             info.mode=random.nextInt(3)+1;
             dao.add(info);
+        }
+    }
+    @Test
+    public void t2Delete() throws  Exception{
+        BlackNumberDao dao=new BlackNumberDao(context);
+        BlackContactInfo info=new BlackContactInfo();
+        for(long i=1;i<5;i++){
+            info.phoneNumber=13500000000l+i+"";
+            dao.delete(info);
         }
     }
     @Test
@@ -68,7 +79,7 @@ public class BlackNumberDaoTest {
    @Test
     public void t6IsNumberExist() throws  Exception{
        BlackNumberDao dao=new BlackNumberDao(context);
-       boolean isExist=dao.IsNumberExist(1350000008l+"");
+       boolean isExist=dao.IsNumberExist(13500000008l+"");
        if (isExist){
            Log.i("TestBlackNumberDao","该号码在数据库中");
 

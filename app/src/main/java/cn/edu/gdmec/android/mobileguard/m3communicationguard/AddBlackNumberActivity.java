@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,7 +36,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
         mNumET=(EditText) findViewById(R.id.et_blacknumber);
         mNameET=(EditText) findViewById(R.id.et_balckname);
         findViewById(R.id.add_blacknum_btn).setOnClickListener(this);
-        findViewById(R.id.add_fromcontact_brn).setOnClickListener(this);
+        findViewById(R.id.add_fromcontact_btn).setOnClickListener(this);
     }
 
     @Override
@@ -52,6 +53,8 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //新增的
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_add_black_number);
         dao=new BlackNumberDao(AddBlackNumberActivity.this);
         initView();
@@ -61,6 +64,9 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
     public void onClick(View view) {
      switch (view.getId()){
          case R.id.imgv_leftbtn:
+             finish();
+             break;
+         case R.id.add_blacknum_btn:
              String number=mNumET.getText().toString().trim();
              String name=mNameET.getText().toString().trim();
              if (TextUtils.isEmpty(number)|| TextUtils.isEmpty(name)){
@@ -90,7 +96,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
                  finish();
              }
              break;
-         case R.id.add_fromcontact_brn:
+         case R.id.add_fromcontact_btn:
              startActivityForResult(
                      new Intent(this, ContactSelectActivity.class),0);
              break;
