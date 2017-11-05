@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -26,7 +27,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     private BlackNumberDao dao;
     private ListView mListView;
     private int pagenumber=0;
-    private int pagesize=4;
+    private int pagesize=10;
     private int totalNumber;
     private List<BlackContactInfo> pageBlackNumber=new ArrayList<BlackContactInfo>();
     private BlackContactAdapter adapter;
@@ -74,9 +75,11 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onScrollStateChanged(AbsListView absListView, int i) {
                 switch (i){
-                    //case AbsListView.OnScrollListener.SCROLL_STATE_FLING:
-                    //新增的
                     case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
+                    case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+                   case AbsListView.OnScrollListener.SCROLL_STATE_FLING:
+                    //新增的
+                    //case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
                         int lastVisiblePosition=mListView.getLastVisiblePosition();
                         if(lastVisiblePosition==pageBlackNumber.size()-1){
                             pagenumber++;
@@ -102,8 +105,10 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //新增加的
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+       // requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_security_phone);
+        getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         initView();
         fillData();
     }
@@ -125,7 +130,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     protected void onResume() {
         super.onResume();
         //新增加的
-        if(totalNumber!=dao.getTotalNumber()){
+       // if(totalNumber!=dao.getTotalNumber()){
         if(dao.getTotalNumber()>0){
             mHaveBlackNumber.setVisibility(View.VISIBLE);
             mNoBlackNumber.setVisibility(View.GONE);
@@ -141,4 +146,4 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
             adapter.notifyDataSetChanged();
         }
     }
-}}
+}//}

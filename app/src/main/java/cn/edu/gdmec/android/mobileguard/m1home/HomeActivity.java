@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
@@ -34,8 +35,10 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_home2);
         getSupportActionBar().hide();
+
         msharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
         gv_home = (GridView) findViewById(R.id.gv_home);
         gv_home.setAdapter(new HomeAdapter(HomeActivity.this));

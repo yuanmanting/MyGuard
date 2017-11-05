@@ -36,7 +36,7 @@ public class BlackNumberDaoTest {
     @Test
     public void t1Add() throws Exception{
         //添加一行
-        BlackNumberDao dao=new BlackNumberDao(context);
+       // BlackNumberDao dao=new BlackNumberDao(context);
         Random random=new Random(8979);
         for (long i=1;i<30;i++){
             BlackContactInfo info=new BlackContactInfo();
@@ -71,7 +71,7 @@ public class BlackNumberDaoTest {
 
    }
    @Test
-    public void t5GetBlackNumber() throws Exception{
+    public void t5GetTotalNumber() throws Exception{
        BlackNumberDao dao=new BlackNumberDao(context);
        int total=dao.getTotalNumber();
        Log.i("TestBlackNumberDao","数据总条目:"+total);

@@ -25,10 +25,10 @@
        android:layout_marginTop="10dp"
         android:textColor="@color/purple"/>
     <View
-        android:background="@drawable/delete_icon"
+        android:id="@+id/view_black_delete"
         android:layout_width="34dp"
         android:layout_height="40dp"
-        android:id="@+id/view_black_delete"
+        android:background="@drawable/delete_icon"
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
         android:layout_centerVertical="true"/>
