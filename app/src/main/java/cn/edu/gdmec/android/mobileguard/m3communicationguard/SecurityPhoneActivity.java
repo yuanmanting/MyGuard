@@ -76,8 +76,8 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
             public void onScrollStateChanged(AbsListView absListView, int i) {
                 switch (i){
                     case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
-                    case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
-                   case AbsListView.OnScrollListener.SCROLL_STATE_FLING:
+                    //case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+                   //case AbsListView.OnScrollListener.SCROLL_STATE_FLING:
                     //新增的
                     //case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
                         int lastVisiblePosition=mListView.getLastVisiblePosition();
