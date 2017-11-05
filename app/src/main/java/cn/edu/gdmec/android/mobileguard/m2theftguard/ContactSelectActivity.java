@@ -3,8 +3,6 @@ package cn.edu.gdmec.android.mobileguard.m2theftguard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -69,6 +67,7 @@ public class ContactSelectActivity  extends AppCompatActivity implements View.On
                 ContactInfo item = (ContactInfo) adapter.getItem(position);
                 Intent intent = new Intent();
                 intent.putExtra("phone", item.phone);
+                intent.putExtra("name",item.name);
                 setResult(0, intent);
                 finish();
 
