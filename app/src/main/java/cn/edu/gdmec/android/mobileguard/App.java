@@ -20,6 +20,7 @@ public class App extends Application {
         correctSIM();
     }
 
+
     public void correctSIM() {
         //检查sim卡是否发生变化
         SharedPreferences sp = getSharedPreferences("config", Context.MODE_PRIVATE);
