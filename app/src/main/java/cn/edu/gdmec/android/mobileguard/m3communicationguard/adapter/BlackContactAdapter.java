@@ -29,6 +29,7 @@ public class BlackContactAdapter extends BaseAdapter{
         View mDeleteView;
 
 
+
     }
     public interface BlackConactCallBack{
         void DataSizeChanged();
@@ -78,8 +79,10 @@ public class BlackContactAdapter extends BaseAdapter{
         +contactInfos.get(i).phoneNumber+")");
         holder.mModeTV.setText(contactInfos.get(i).getModeString(
                 contactInfos.get(i).mode));
+
         holder.mNameTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
         holder.mModeTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
+
         holder.mContactImgv
                 .setBackgroundResource(R.drawable.brightpurple_contact_icon);
         holder.mDeleteView.setOnClickListener(new View.OnClickListener(){

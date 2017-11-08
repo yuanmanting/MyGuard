@@ -55,7 +55,7 @@ public class BlackNumberDao {
    public List<BlackContactInfo> getPageBlackNumber(int pagenumber,int pagesize){
        SQLiteDatabase db=blackNumberOpenHelper.getReadableDatabase();
        Cursor cursor=db.rawQuery(
-               "select number,mode,name from blacknumber limit ? offset ?",
+               "select number,mode,name,saorao from blacknumber limit ? offset ?",
                new String[]{ String.valueOf(pagesize),
                String.valueOf(pagesize*pagenumber)});
        List<BlackContactInfo> mBlackContactInfos=new ArrayList<BlackContactInfo>();

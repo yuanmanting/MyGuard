@@ -9,6 +9,7 @@ public class BlackContactInfo {
     public String contactName;
     public int mode;
 
+
     public String getModeString(int mode) {
         switch (mode){
             case 1:

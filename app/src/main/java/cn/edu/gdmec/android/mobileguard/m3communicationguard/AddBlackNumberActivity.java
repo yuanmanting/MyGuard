@@ -35,6 +35,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
         mTelCB=(CheckBox) findViewById(R.id.cb_blacknumber_tel);
         mNumET=(EditText) findViewById(R.id.et_blacknumber);
         mNameET=(EditText) findViewById(R.id.et_balckname);
+
         findViewById(R.id.add_blacknum_btn).setOnClickListener(this);
         findViewById(R.id.add_fromcontact_btn).setOnClickListener(this);
     }
@@ -45,8 +46,10 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
         if (data !=null){
             String phone=data.getStringExtra("phone");
             String name=data.getStringExtra("name");
+            String saorao=data.getStringExtra("saorao");
             mNameET.setText(name);
             mNumET.setText(phone);
+
         }
     }
 
