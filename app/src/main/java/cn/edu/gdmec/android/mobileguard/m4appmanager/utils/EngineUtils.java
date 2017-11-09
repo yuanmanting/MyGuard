@@ -18,7 +18,7 @@ public class EngineUtils {
         intent.addCategory("android.intent.category.DEFAULT");
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT,"推荐您使用一款软件，名称为："+appInfo.appName
-        +"下载路径：https://play.google.com/store.apps/details?id="
+        +"下载路径：https://play.google.com/store/apps/details?id="
                 +appInfo.packageName);
         context.startActivity(intent);
     }
@@ -41,11 +41,21 @@ public class EngineUtils {
     public static void uninstallApplication(Context context,AppInfo appInfo){
         if (appInfo.isUserApp){
             Intent intent=new Intent();
-            intent.setAction(Intent.ACTION_DEFAULT);
+            intent.setAction(Intent.ACTION_DELETE);
             intent.setData(Uri.parse("package:"+appInfo.packageName));
             context.startActivity(intent);
         }else{
             Toast.makeText(context,"系统应用无法卸载",Toast.LENGTH_LONG).show();
         }
+    }
+    public static void guanyuApplication(Context context, AppInfo appInfo){
+      Intent intent=new Intent("android.intent.action.SEND");
+        intent.addCategory("android.intent.category.DEFAULT");
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT,"推荐您使用一款软件，名称为："+appInfo.appName
+                +"下载路径：https://play.google.com/store/apps/details?id="
+                +appInfo.packageName);
+        context.startActivity(intent);
+
     }
 }
