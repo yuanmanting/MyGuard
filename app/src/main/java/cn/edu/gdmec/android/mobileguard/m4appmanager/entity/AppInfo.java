@@ -23,6 +23,10 @@ public class AppInfo {
     public boolean isUserApp;
 //    是否选中，默认都为false
     public boolean isSelected=false;
+    public String version;
+    public String InstallTime;
+    public String signature;
+    public String permissions;
     public String getAppLocation(boolean isInRoom){
         if (isInRoom){
             return "手机内存";

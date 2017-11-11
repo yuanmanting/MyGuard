@@ -2,7 +2,6 @@ package cn.edu.gdmec.android.mobileguard.m4appmanager.adapter;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
 import android.text.format.Formatter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -147,6 +146,7 @@ public class AppManagerAdapter extends BaseAdapter{
      TextView mAppSizeTV;
      TextView mAppNameTV;
      LinearLayout mAppOptionLL;
+
 
  }
  class MyClickListener implements View.OnClickListener{
