@@ -38,6 +38,7 @@ public class AppInfoParser {
             File file=new File(apkPath);
             long appSize=file.length();
             appinfo.appSize=appSize;
+
             String version=packInfo.versionName;
             appinfo.version=version;
             appinfo.InstallTime=new Date(packInfo.firstInstallTime).toLocaleString();
