@@ -101,8 +101,7 @@
       </receiver>
 
         <activity android:name=".m4appmanager.AppManagerActivity"/>
-
-
+        ///djjd
 
     </application>
 
