@@ -6,8 +6,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
@@ -34,6 +38,33 @@ public class AppInfoParser {
             File file=new File(apkPath);
             long appSize=file.length();
             appinfo.appSize=appSize;
+
+            String version=packInfo.versionName;
+            appinfo.version=version;
+            appinfo.InstallTime=new Date(packInfo.firstInstallTime).toLocaleString();
+            try{
+                PackageInfo packinfo=pm.getPackageInfo(packname,PackageManager.GET_SIGNATURES);
+                byte[] ss=packinfo.signatures[0].toByteArray();
+                CertificateFactory of=CertificateFactory.getInstance("X509");
+                X509Certificate cert=(X509Certificate) of.generateCertificate(new
+                        ByteArrayInputStream(ss));
+                if (cert != null){
+                    appinfo.signature=cert.getIssuerDN().toString();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            PackageInfo packinfo1=null;
+            try {
+                packinfo1=pm.getPackageInfo(packname,PackageManager.GET_PERMISSIONS);
+                if (packinfo1.requestedPermissions !=null){
+                    for (String pio:packinfo1.requestedPermissions){
+                        appinfo.permissions=appinfo.permissions+pio+"\n";
+                    }
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             int flags=packInfo.applicationInfo.flags;
             if ((ApplicationInfo.FLAG_EXTERNAL_STORAGE & flags) != 0){
                 appinfo.isInRoom=false;

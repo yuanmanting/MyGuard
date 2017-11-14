@@ -1,6 +1,8 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager.utils;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -49,13 +51,26 @@ public class EngineUtils {
         }
     }
     public static void guanyuApplication(Context context, AppInfo appInfo){
-      Intent intent=new Intent("android.intent.action.SEND");
-        intent.addCategory("android.intent.category.DEFAULT");
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT,"推荐您使用一款软件，名称为："+appInfo.appName
-                +"下载路径：https://play.google.com/store/apps/details?id="
-                +appInfo.packageName);
-        context.startActivity(intent);
-
-    }
+//      Intent intent=new Intent("android.intent.action.SEND");
+//        intent.addCategory("android.intent.category.DEFAULT");
+//        intent.setType("text/plain");
+//        intent.putExtra(Intent.EXTRA_TEXT,"推荐您使用一款软件，名称为："+appInfo.appName
+//                +"下载路径：https://play.google.com/store/apps/details?id="
+//                        +appInfo.packageName);
+//        context.startActivity(intent);
+//
+      final AlertDialog.Builder builder=new AlertDialog.Builder(context);
+        builder.setTitle(appInfo.appName);
+        builder.setMessage("Version:"+appInfo.version+
+                "\nInstall time:"+appInfo.InstallTime+
+                "\nCertificate issuer:"+appInfo.signature+
+                "\n\nPermissions:"+appInfo.permissions);
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
+}
 }
