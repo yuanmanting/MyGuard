@@ -65,7 +65,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
                     mScanListView.setSelection(mScanAppInfos.size());
                     break;
                 case SCAN_FINISH:
-                    mScanAppTV.setText("扫面完成！");
+                    mScanAppTV.setText("扫描完成！");
                     mScanningIcon.clearAnimation();
                     mCancelBtn.setBackgroundResource(R.drawable.scan_complete);
                     saveScanTime();
