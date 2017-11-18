@@ -96,6 +96,7 @@ public class AppManagerAdapter extends BaseAdapter{
             viewHolder.mUninstallTV=(TextView)view.findViewById(R.id.tv_uninstall_app);
             viewHolder.mAppOptionLL=(LinearLayout)view.findViewById(R.id.ll_option_app);
             viewHolder.mGuanApi=(TextView)view.findViewById(R.id.tv_guanyu);
+            viewHolder.mActivityTV=(TextView)view.findViewById(R.id.tv_activity);
             view.setTag(viewHolder);
         }
          if(appInfo!=null) {
@@ -117,6 +118,7 @@ public class AppManagerAdapter extends BaseAdapter{
         viewHolder.mShareAppTV.setOnClickListener(listener);
         viewHolder.mUninstallTV.setOnClickListener(listener);
          viewHolder.mGuanApi.setOnClickListener(listener);
+        viewHolder.mActivityTV.setOnClickListener(listener);
         return view;
 
     }
@@ -146,6 +148,7 @@ public class AppManagerAdapter extends BaseAdapter{
      TextView mAppSizeTV;
      TextView mAppNameTV;
      LinearLayout mAppOptionLL;
+     TextView mActivityTV;
 
 
  }
@@ -182,6 +185,9 @@ public class AppManagerAdapter extends BaseAdapter{
                  break;
              case R.id.tv_guanyu:
                  EngineUtils.guanyuApplication(context,appInfo);
+                 break;
+             case R.id.tv_activity:
+                 EngineUtils.getActivity(context,appInfo);
                  break;
          }
 

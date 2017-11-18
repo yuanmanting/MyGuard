@@ -27,6 +27,8 @@ public class AppInfo {
     public String InstallTime;
     public String signature;
     public String permissions;
+    //添加activity
+    public String activityName;
     public String getAppLocation(boolean isInRoom){
         if (isInRoom){
             return "手机内存";
