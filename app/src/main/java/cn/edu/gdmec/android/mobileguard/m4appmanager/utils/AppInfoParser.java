@@ -67,17 +67,16 @@ public class AppInfoParser {
                 e.printStackTrace();
             }
             // 添加activity活动
-            try {
-                PackageInfo packInfo2=pm.getPackageInfo(packname,PackageManager.GET_ACTIVITIES);
-                ActivityInfo[] act=packInfo2.activities;
-                List<ActivityInfo> a=new ArrayList<>();
-                if (act !=null){
-                    for (ActivityInfo str:act){
-                        a.add(str);
-                        appinfo.activityName=a.toString();
+            PackageInfo packinfo3;
+            try{
+                packinfo3=pm.getPackageInfo(packname,PackageManager.GET_ACTIVITIES);
+                ActivityInfo[] activityInfos=packinfo3.activities;
+                if(activityInfos!=null){
+                    for(ActivityInfo info:activityInfos){
+                        appinfo.activityName=appinfo.activityName+info.name+"\n";
                     }
                 }
-            }catch (Exception e){
+            }catch (PackageManager.NameNotFoundException e){
                 e.printStackTrace();
             }
             int flags=packInfo.applicationInfo.flags;

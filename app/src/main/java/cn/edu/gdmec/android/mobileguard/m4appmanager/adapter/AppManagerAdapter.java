@@ -118,7 +118,7 @@ public class AppManagerAdapter extends BaseAdapter{
         viewHolder.mShareAppTV.setOnClickListener(listener);
         viewHolder.mUninstallTV.setOnClickListener(listener);
          viewHolder.mGuanApi.setOnClickListener(listener);
-        viewHolder.mActivityTV.setOnClickListener(listener);
+       viewHolder.mActivityTV.setOnClickListener(listener);
         return view;
 
     }
@@ -143,12 +143,13 @@ public class AppManagerAdapter extends BaseAdapter{
      TextView mShareAppTV;
      TextView mSettingAppTV;
      TextView mGuanApi;
+     TextView mActivityTV;
      ImageView mAppIconImgv;
      TextView mAppLocationTV;
      TextView mAppSizeTV;
      TextView mAppNameTV;
      LinearLayout mAppOptionLL;
-     TextView mActivityTV;
+
 
 
  }

@@ -76,7 +76,7 @@ public class EngineUtils {
 public static void getActivity(Context context,AppInfo appInfo){
     final AlertDialog.Builder builder=new AlertDialog.Builder(context);
     builder.setTitle(appInfo.appName);
-    builder.setMessage("Activity:"+appInfo.activityName);
+    builder.setMessage("ActivityInfo:"+appInfo.activityName);
     builder.setPositiveButton("确定",new DialogInterface.OnClickListener(){
 
         @Override
@@ -84,5 +84,6 @@ public static void getActivity(Context context,AppInfo appInfo){
             dialogInterface.dismiss();
         }
     });
+    builder.show();
 }
 }
