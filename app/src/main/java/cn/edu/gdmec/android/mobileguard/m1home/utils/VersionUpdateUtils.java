@@ -97,7 +97,7 @@ public class VersionUpdateUtils {
           handler.sendEmptyMessage(MESSAGE_JSON_ERROR);
             }
 
-
+//ggid
         }
         private void  showUpdateDialog(final VersionEntity versionEntity){
             AlertDialog.Builder builder=new AlertDialog.Builder(context);
