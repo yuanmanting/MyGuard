@@ -32,5 +32,6 @@ public class MyUtils {
                 new File(Environment.getExternalStoragePublicDirectory(
                         "/download").getPath()+"/"+
                 apkFile)),"application/vnd.android package-archive");
+        activity.startActivityForResult(intent,0);
     }
 }
