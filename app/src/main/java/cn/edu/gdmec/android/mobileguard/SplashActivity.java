@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 
-
+import cn.edu.gdmec.android.mobileguard.m1home.HomeActivity;
 import cn.edu.gdmec.android.mobileguard.m1home.utils.MyUtils;
 import cn.edu.gdmec.android.mobileguard.m1home.utils.VersionUpdateUtils;
 
@@ -20,12 +20,12 @@ public class SplashActivity extends AppCompatActivity {
         mVersion= MyUtils.getVersion(getApplicationContext());
         mTvVersion=(TextView)findViewById(R.id.tv_spalsh_version);
         mTvVersion.setText("版本号:"+mVersion);
-        final VersionUpdateUtils versionUpdateUtils=new VersionUpdateUtils(mVersion,SplashActivity.this);
+        final VersionUpdateUtils versionUpdateUtils=new VersionUpdateUtils(mVersion,SplashActivity.this,null, HomeActivity.class);
         new Thread(){
             @Override
             public  void run() {
                 super.run();
-                versionUpdateUtils.getCloudVersion();
+                versionUpdateUtils.getCloudVersion("http://android2017.duppcom/updateinfo.html");
                 //xiugai
             }
             }.start();
