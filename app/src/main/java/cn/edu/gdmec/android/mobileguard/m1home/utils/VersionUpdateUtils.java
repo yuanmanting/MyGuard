@@ -3,6 +3,7 @@ package cn.edu.gdmec.android.mobileguard.m1home.utils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -39,6 +40,8 @@ public class VersionUpdateUtils {
     private String mVersion;
     private Activity context;
     private VersionEntity versionEntity;
+    private ProgressDialog mProgressDialog;
+
 
     private BroadcastReceiver broadcastReceiver;
     private Class<?> nextActivity;
@@ -55,9 +58,11 @@ public class VersionUpdateUtils {
             switch (msg.what){
                 case MESSAGE_IO_ERROR:
                     Toast.makeText(context,"IO错误",Toast.LENGTH_LONG).show();
+                    enterHome();
                     break;
                 case MESSAGE_JSON_ERROR:
                     Toast.makeText(context,"JSON解析错误",Toast.LENGTH_LONG).show();
+                    enterHome();
                     break;
                 case MESSAGE_SHOW_DIALOG:
                     showUpdateDialog(versionEntity);

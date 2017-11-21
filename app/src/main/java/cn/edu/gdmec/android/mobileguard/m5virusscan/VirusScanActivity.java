@@ -3,6 +3,9 @@ package cn.edu.gdmec.android.mobileguard.m5virusscan;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,11 +16,14 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 import cn.edu.gdmec.android.mobileguard.R;
+import cn.edu.gdmec.android.mobileguard.m1home.utils.VersionUpdateUtils;
+import cn.edu.gdmec.android.mobileguard.m5virusscan.dao.AntiVirusDao;
 
 /**
  * Created by HP on 2017/11/14.
@@ -26,13 +32,15 @@ import cn.edu.gdmec.android.mobileguard.R;
 public class VirusScanActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView mLastTimeTV;
     private SharedPreferences mSP;
+    private String mVersion;
+    private TextView mDbVersionTV;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_virus_scan);
         mSP=getSharedPreferences("config",MODE_PRIVATE);
-        copyDB("antivirus.db");
+        copyDB("antivirus.db","");
         initView();
     }
 
@@ -43,7 +51,35 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         mLastTimeTV.setText(string);
         super.onResume();
     }
-    private void copyDB(final String dbname){
+    Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==0){
+                AntiVirusDao dao=new AntiVirusDao(VirusScanActivity.this);
+                mVersion=dao.getVirusVersion();
+                mDbVersionTV=(TextView)findViewById(R.id.tv_scan_version);
+                mDbVersionTV.setText("病毒数据库版本:"+mVersion);
+                UpdateDb(mVersion);
+
+            }
+            super.handleMessage(msg);
+        }
+    };
+    VersionUpdateUtils.DownloadCallback downloadCallback=new VersionUpdateUtils.DownloadCallback() {
+        @Override
+        public void afterDownload(String filename) {
+            copyDB("antivirus.db", Environment.getExternalStoragePublicDirectory("/download/").getPath());
+        }
+    };
+    final private void UpdateDb(String localDbVersion){
+        final VersionUpdateUtils versionUpdateUtils=new VersionUpdateUtils(localDbVersion,VirusScanActivity.this,downloadCallback,null);
+        new Thread(){
+            public void  run(){
+                versionUpdateUtils.getCloudVersion("http://android2017.duapp.com/virusupdateinfo.html");
+            }
+        }.start();
+    }
+    private void copyDB(final String dbname,final String fromPath){
         new Thread(){
              public void  run(){
              try{
@@ -51,8 +87,14 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                  if(file.exists()&&file.length()>0){
                      Log.i("VirusScanActivity","数据库已经存在!");
                      return;
+                 } InputStream is;
+                 if(fromPath.equals("")){
+                     is =getAssets().open(dbname);
+                 }else {
+                     file=new File(fromPath,"antivirus.db");
+                     is=new FileInputStream(file);
                  }
-                 InputStream is=getAssets().open(dbname);
+
                  FileOutputStream fos=openFileOutput(dbname,MODE_PRIVATE);
                  byte[] buffer=new byte[1024];
                  int len=0;
@@ -61,6 +103,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                  }
                  is.close();
                  fos.close();
+                 handler.sendEmptyMessage(0);
              } catch (IOException e) {
                  e.printStackTrace();
              }

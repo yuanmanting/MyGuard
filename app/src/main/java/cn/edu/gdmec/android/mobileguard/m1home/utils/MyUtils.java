@@ -15,17 +15,18 @@ import java.io.File;
  */
 
 public class MyUtils {
-    public static  String getVersion(Context context){
-        PackageManager packageManager=context.getPackageManager();
+    public static String getVersion(Context context) {
+        PackageManager packageManager = context.getPackageManager();
         try {
-            PackageInfo packageInfo=packageManager.getPackageInfo(context.getPackageName(),0);
-            return  packageInfo.versionName;
+            PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
+            return packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-            return  "";
+            return "";
         }
     }
-    public static void installApk(Activity activity,String apkFile){
+}
+   /* public static void installApk(Activity activity,String apkFile){
         Intent intent=new Intent(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         intent.setDataAndType(Uri.fromFile(
@@ -33,4 +34,4 @@ public class MyUtils {
                         "/download").getPath()+"/"+
                 apkFile)),"application/vnd.android package-archive");
     }
-}
+}*/

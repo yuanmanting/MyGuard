@@ -29,5 +29,16 @@ public class AntiVirusDao {
         db.close();
         return desc;
     }
+   public String getVirusVersion(){
+       String desc=null;
+       SQLiteDatabase db=SQLiteDatabase.openDatabase(dbname,null,SQLiteDatabase.OPEN_READONLY);
+       Cursor cursor=db.rawQuery("select * from version",null);
+       if(cursor.moveToNext()){
+           desc=cursor.getString(0)+","+cursor.getString(1)+","+cursor.getString(2);
 
+       }
+       cursor.close();
+       db.close();
+       return desc;
+   }
 }
