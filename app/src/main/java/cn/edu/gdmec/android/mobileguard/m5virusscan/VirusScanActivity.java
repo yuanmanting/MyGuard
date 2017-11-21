@@ -78,7 +78,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                 versionUpdateUtils.getCloudVersion("http://android2017.duapp.com/virusupdateinfo.html");
             }
         }.start();
-    }
+    }//eee
     private void copyDB(final String dbname,final String fromPath){
         new Thread(){
              public void  run(){
