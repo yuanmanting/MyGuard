@@ -1,14 +1,16 @@
 package cn.edu.gdmec.android.mobileguard.m6cleancache;
 
 
+import android.content.Intent;
 import android.content.pm.IPackageStatsObserver;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageStats;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
+import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.Formatter;
 import android.view.View;
@@ -20,7 +22,6 @@ import android.widget.Toast;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.FormattableFlags;
 import java.util.List;
 
 import cn.edu.gdmec.android.mobileguard.R;
@@ -122,15 +123,60 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
     }
     public  void getCacheSize(PackageInfo info){
         try {
-            Method method=PackageManager.class.getDeclaredMethod("getPackageSizeInfo",String.class, IPackageStatsObserver.class);
-
+            Method method=PackageManager.class.getDeclaredMethod(
+                    "getPackageSizeInfo",String.class,
+                    IPackageStatsObserver.class);
+            method.invoke(pm,info.packageName,new MyPackObserver(info));
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+    private class MyPackObserver extends
+            android.content.pm.IPackageStatsObserver.Stub{
+          private PackageInfo info;
+        public MyPackObserver(PackageInfo info) {
+            this.info=info;
+
+        }
+
+        @Override
+        public void onGetStatsCompleted(PackageStats pStats, boolean succeeded) throws RemoteException {
+            long cachesize=pStats.cacheSize;
+            if (cachesize>=0){
+                CacheInfo cacheInfo=new CacheInfo();
+                cacheInfo.cacheSize=cachesize;
+                cacheInfo.packagename=info.packageName;
+                cacheInfo.appName=info.applicationInfo.loadLabel(pm).toString();
+                cacheInfo.appIcon=info.applicationInfo.loadIcon(pm);
+                cacheInfos.add(cacheInfo);
+                cacheMemory+=cachesize;
+            }
+        }
+    }
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.imgv_leftbtn:
+                finish();
+                break;
+            case R.id.btn_cleanall:
+                if (cacheMemory>0){
+                    Intent intent=new Intent(this,CleanCacheActivity.class);
+                    intent.putExtra("cacheMermory",cacheMemory);
+                    startActivity(intent);
+                    finish();
+                }
+                break;
+        }
+
+    }
 
     @Override
-    public void onClick(View v) {
-
+    protected void onDestroy() {
+        super.onDestroy();
+        animation.stop();
+        if (thread != null){
+            thread.interrupt();
+        }
     }
 }
