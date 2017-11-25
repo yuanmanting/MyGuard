@@ -97,6 +97,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
         animation.setOneShot(false);
         animation.start();
         adapter=new CacheCleanAdapter(this,mCacheInfos);
+        mCacheLV.setAdapter(adapter);
         fillData();
     }
     private void fillData(){
@@ -116,6 +117,9 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
                     msg.what=SCANNING;
                     handler.sendMessage(msg);
                 }
+                Message msg=Message.obtain();
+                msg.what=FINISH;
+                handler.sendMessage(msg);
 
             }
         };
