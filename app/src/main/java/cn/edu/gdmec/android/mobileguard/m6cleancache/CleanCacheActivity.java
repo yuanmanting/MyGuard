@@ -68,7 +68,6 @@ public class CleanCacheActivity  extends AppCompatActivity implements View.OnCli
     private void initData() {
         cleanAll();
         new Thread(){
-            @Override
             public void run() {
                 long memory=0;
                 while (memory < cacheMemory){
