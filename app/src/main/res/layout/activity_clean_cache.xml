@@ -9,9 +9,10 @@
         android:layout_height="match_parent"
         android:background="@color/light_rose_red">
         <FrameLayout
+            android:id="@+id/fl_cleancache"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/fl_cleancache">
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -50,9 +51,9 @@
             </LinearLayout>
         </FrameLayout>
         <FrameLayout
+            android:id="@+id/fl_finishclean"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/fl_finishclean"
             android:visibility="gone">
             <LinearLayout
                 android:layout_width="match_parent"
