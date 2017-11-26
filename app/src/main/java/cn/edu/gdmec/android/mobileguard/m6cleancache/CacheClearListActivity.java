@@ -173,7 +173,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
                 break;
         }
 
-    }
+    }//wue
 
     @Override
     protected void onDestroy() {
