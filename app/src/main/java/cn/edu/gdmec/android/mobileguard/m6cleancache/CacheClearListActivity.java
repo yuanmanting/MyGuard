@@ -34,7 +34,7 @@ import cn.edu.gdmec.android.mobileguard.m6cleancache.entity.CacheInfo;
 
 public class CacheClearListActivity extends AppCompatActivity implements View.OnClickListener {
    protected  static final int SCANNING=100;
-    protected static final int FINISH=10;
+    protected static final int FINISH=101;
     private AnimationDrawable animation;
     private TextView mRecomandTV;
     private TextView mCanCleanTV;
