@@ -137,8 +137,8 @@ public class CleanCacheActivity  extends AppCompatActivity implements View.OnCli
     }
     class ClearCacheObserver extends android.content.pm.IPackageDataObserver.Stub{
 
-        @Override
-        public void onRemoveCompleted( final String packageName, final boolean succeeded) throws RemoteException {
+
+        public void onRemoveCompleted( final String packageName, final boolean succeeded) {
 
         }
     }

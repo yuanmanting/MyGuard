@@ -19,7 +19,7 @@
         android:maxLength="24"/>
     <TextView
         android:id="@+id/tv_appsize_cacheclean"
-        style="@style/textview16sp"
+        style="@style/textview12sp"
         android:layout_below="@+id/tv_appname_cacheclean"
         android:layout_toRightOf="@+id/imgv_appicon_cacheclean"
         android:layout_marginLeft="10dp"
