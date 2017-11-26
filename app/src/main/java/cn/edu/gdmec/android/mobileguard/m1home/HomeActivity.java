@@ -66,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
                     case  3:
                         startActivity(VirusScanActivity.class);
                         break;
-                    case 4:
+                    case 5:
                         startActivity(CacheClearListActivity.class);
                         break;
                 }
