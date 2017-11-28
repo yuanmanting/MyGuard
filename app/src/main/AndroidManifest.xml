@@ -4,9 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!--xinjia-->
+    <!-- xinjia -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
@@ -15,11 +14,10 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <uses-permission android:name="android.permission.READ_SMS"/>
 
-    <!--通讯卫士部分-->
+    <!-- 通讯卫士部分 -->
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
-
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
     <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
 
@@ -85,11 +83,11 @@
             </intent-filter>
         </receiver>
 
-
         <activity android:name=".m3communicationguard.AddBlackNumberActivity"/>
-
         <activity android:name=".m3communicationguard.SecurityPhoneActivity"/>
-        <receiver android:name=".m3communicationguard.receiver.InterceptCallReceiver"
+
+        <receiver
+            android:name=".m3communicationguard.receiver.InterceptCallReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter android:priority="2147483647">
@@ -97,21 +95,31 @@
                 <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
             </intent-filter>
         </receiver>
-      <receiver android:name=".m3communicationguard.receiver.InterceptSmsReceiver"
-          android:enabled="true"
-          android:exported="true">
-          <intent-filter android:priority="2147483647">
-              <action android:name="android.provide.Telephony.SMS_RECEIVED"/>
-          </intent-filter>
-
-      </receiver>
+        <receiver
+            android:name=".m3communicationguard.receiver.InterceptSmsReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.provide.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
 
         <activity android:name=".m4appmanager.AppManagerActivity"/>
         <activity android:name=".m5virusscan.VirusScanActivity"/>
-
         <activity android:name=".m6cleancache.CacheClearListActivity"/>
         <activity android:name=".m6cleancache.CleanCacheActivity"/>
 
+        <service
+            android:name=".m8trafficmonitor.service.TrafficMonitoringService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+        <receiver
+            android:name=".m8trafficmonitor.receiver.BootCompleteReciever"
+            android:enabled="true"
+            android:exported="true">
+        </receiver>
     </application>
 
 </manifest>
