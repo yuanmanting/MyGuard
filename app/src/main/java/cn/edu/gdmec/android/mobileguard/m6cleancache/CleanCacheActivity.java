@@ -36,7 +36,6 @@ public class CleanCacheActivity  extends AppCompatActivity implements View.OnCli
     private FrameLayout mFinishCleanFL;
     private TextView mSizeTV;
     private Handler mHandler=new Handler(){
-        @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case CLEANNING:
