@@ -25,6 +25,7 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivi
 import cn.edu.gdmec.android.mobileguard.m4appmanager.AppManagerActivity;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanActivity;
 import cn.edu.gdmec.android.mobileguard.m6cleancache.CacheClearListActivity;
+import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.OperatorSetActivity;
 import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.TrafficMonitoringActivity;
 
 //import android.os.SystemClock;
@@ -71,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(CacheClearListActivity.class);
                         break;
                     case 6:
-                        startActivity(TrafficMonitoringActivity.class);
+                        startActivity(OperatorSetActivity.class);
                         break;
 
                 }

@@ -29,7 +29,7 @@ public class OperatorSetActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_operator_set);
-        msp=getSharedPreferences("confif",MODE_PRIVATE);
+        msp=getSharedPreferences("config",MODE_PRIVATE);
         initView();
     }
     private void initView(){
