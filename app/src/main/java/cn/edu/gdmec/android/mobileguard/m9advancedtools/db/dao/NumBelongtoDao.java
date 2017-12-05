@@ -51,6 +51,7 @@ public class NumBelongtoDao {
                 case 8:
                     location="本地电话";
                     break;
+
                 default:
                     if (location.length()>=9 && location.startsWith("0")){
                         String address=null;
