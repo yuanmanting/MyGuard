@@ -60,6 +60,7 @@ public class NumBelongtoDao {
                             String str=cursor.getString(0);
                             address=str.substring(0,str.length()-2);
 
+
                         }
                         cursor.close();
                         cursor=db.rawQuery("select location from data2 where area=?",
