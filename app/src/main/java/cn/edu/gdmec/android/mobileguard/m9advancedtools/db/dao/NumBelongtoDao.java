@@ -22,7 +22,7 @@ public class NumBelongtoDao {
                     new String[]{phonenumber.substring(0,7)});
             if (cursor.moveToNext()){
                 location=cursor.getString(0);
-            }
+            }//hkljo
             cursor.close();
         }else{
             switch (phonenumber.length()){
