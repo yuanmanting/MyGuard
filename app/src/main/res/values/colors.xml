@@ -29,4 +29,7 @@
     <!--流量统计模块用到2017.11.28-->
     <color name="bright_green">#26E587</color>
     <color name="light_green">#55DC28</color>
+
+    <!--高级工具模块用到-->
+    <color name="deep_gray">#ff666666</color>
 </resources>
