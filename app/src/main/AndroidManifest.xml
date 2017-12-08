@@ -125,6 +125,8 @@
 
 
         </receiver>
+        <activity android:name=".m9advancedtools.AdvancedToolsActivity"/>
+        <activity android:name=".m9advancedtools.NumBelongtoActivity"/>
     </application>
 
 </manifest>
