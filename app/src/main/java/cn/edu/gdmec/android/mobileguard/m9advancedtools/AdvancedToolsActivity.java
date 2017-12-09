@@ -48,4 +48,5 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
         Intent intent=new Intent(this,cls);
         startActivity(intent);
     }
+    //dgdl
 }
