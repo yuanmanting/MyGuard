@@ -1,12 +1,15 @@
 package cn.edu.gdmec.android.mobileguard.m8trafficmonitor;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.provider.Telephony;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -44,6 +47,23 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
     private ImageView mRemindIMGY;
     private TextView mRemindTV;
     private CorrectFlowReceiver receiver;
+    private TrafficMonitoringService trafficMonitoringService=null;
+    private boolean isBound;
+    private ServiceConnection conn=new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder iBinder) {
+            isBound=true;
+            TrafficMonitoringService.MyBinder binder=(TrafficMonitoringService.MyBinder) iBinder;
+            trafficMonitoringService=binder.getService();
+            trafficMonitoringService.getUsedFlow();
+            System.out.println("Usedflow:"+trafficMonitoringService.getUsedFlow());
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -131,6 +151,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                       smsManager.sendTextMessage("10086",null,"CXLL",null,null);
                       break;
                   case 2:
+                      smsManager.sendTextMessage("10010",null,"CXLL",null,null);
                       break;
                   case 3:
                       break;
@@ -203,5 +224,6 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
             receiver=null;
         }
         super.onDestroy();
+        unbindService(conn);
     }
 }

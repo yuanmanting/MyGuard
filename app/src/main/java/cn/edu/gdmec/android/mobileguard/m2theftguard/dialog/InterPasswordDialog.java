@@ -37,10 +37,12 @@ public class InterPasswordDialog extends Dialog implements View.OnClickListener{
     private void initView(){
         mTitleTV=(TextView)findViewById(R.id.tv_interpwd_title);
         mInterET=(EditText)findViewById(R.id.et_inter_password);
-        mOKBtn=(Button)findViewById(R.id.btn_comfirm);
+        /*mOKBtn=(Button)findViewById(R.id.btn_comfirm);
         mCancleBtn=(Button)findViewById(R.id.btn_dismiss);
         mOKBtn.setOnClickListener(this);
-        mCancleBtn.setOnClickListener(this);
+        mCancleBtn.setOnClickListener(this);*/
+        findViewById(R.id.btn_comfirm).setOnClickListener(this);
+        findViewById(R.id.btn_dismiss).setOnClickListener(this);
     }
    public void setTitle(String title) {
 

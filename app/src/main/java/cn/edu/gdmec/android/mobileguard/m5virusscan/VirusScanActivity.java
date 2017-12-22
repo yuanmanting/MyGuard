@@ -56,10 +56,10 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         public void handleMessage(Message msg){
             if(msg.what==0){
                 AntiVirusDao dao=new AntiVirusDao(VirusScanActivity.this);
-                mVersion=dao.getVirusVersion();
+               String dbVersion=dao.getVirusVersion();
                 mDbVersionTV=(TextView)findViewById(R.id.tv_scan_version);
-                mDbVersionTV.setText("病毒数据库版本:"+mVersion);
-                UpdateDb(mVersion);
+                mDbVersionTV.setText("病毒数据库版本:"+dbVersion);
+                UpdateDb(dbVersion);
 
             }
             super.handleMessage(msg);
@@ -68,7 +68,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
     VersionUpdateUtils.DownloadCallback downloadCallback=new VersionUpdateUtils.DownloadCallback() {
         @Override
         public void afterDownload(String filename) {
-            copyDB("antivirus.db", Environment.getExternalStoragePublicDirectory("/download/").getPath());
+            copyDB("antivirus.db", Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath());
         }
     };
     final private void UpdateDb(String localDbVersion){
@@ -84,8 +84,9 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
              public void  run(){
              try{
                  File file=new File(getFilesDir(),dbname);
-                 if(file.exists()&&file.length()>0){
+                 if(file.exists()&&file.length()>0&&fromPath.equals("")){
                      Log.i("VirusScanActivity","数据库已经存在!");
+                     handler.sendEmptyMessage(0);
                      return;
                  } InputStream is;
                  if(fromPath.equals("")){
@@ -118,6 +119,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         mLeftImgv.setImageResource(R.drawable.back);
         mLastTimeTV=(TextView)findViewById(R.id.tv_lastscantime);
         findViewById(R.id.rl_allscanvirus).setOnClickListener(this);
+        findViewById(R.id.rl_cloudscanvirus).setOnClickListener(this);
     }
     @Override
     public void onClick(View view) {
@@ -128,6 +130,10 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
             case R.id.rl_allscanvirus:
                 startActivity(new Intent(this,VirusScanSpeedActivity.class));
                 break;
+            case R.id.rl_cloudscanvirus:
+                Intent intent=new Intent(this,VirusScanSpeedActivity.class);
+                intent.putExtra("cloud",true);
+                startActivity(intent);
         }
     }
 }

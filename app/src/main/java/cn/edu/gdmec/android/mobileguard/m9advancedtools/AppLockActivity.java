@@ -1,7 +1,8 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools;
 
-import android.app.Fragment;
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -105,8 +106,8 @@ public class AppLockActivity extends AppCompatActivity implements View.OnClickLi
         }
         @Override
         public android.support.v4.app.Fragment getItem(int arg0) {
-            //加这里就报错  return mFragments.get(arg0);
-          return  null;
+         return mFragments.get(arg0);
+          //return  null;
         }
 
 

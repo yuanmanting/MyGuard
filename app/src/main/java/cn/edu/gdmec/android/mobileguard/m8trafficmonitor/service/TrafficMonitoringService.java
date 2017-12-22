@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.TrafficStats;
+import android.os.Binder;
 import android.os.IBinder;
 
 import java.text.SimpleDateFormat;
@@ -20,15 +21,22 @@ public class TrafficMonitoringService extends Service {
     private long usedFlow;
     boolean flag=true;
 
-    public TrafficMonitoringService() {
+    public class MyBinder extends Binder {
+        public TrafficMonitoringService getService() {
+            return TrafficMonitoringService.this;
+        }
     }
+        private MyBinder binder = new MyBinder();
 
-    @Override
-    public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-       // throw new UnsupportedOperationException("Not yet implemented");
-        return null;
-    }
+        @Override
+        public IBinder onBind(Intent intent) {
+            // TODO: Return the communication channel to the service.
+            // throw new UnsupportedOperationException("Not yet implemented");
+            return binder;
+        }
+
+   public long getUsedFlow(){
+   return usedFlow;}
 
     @Override
     public void onCreate() {
@@ -37,6 +45,7 @@ public class TrafficMonitoringService extends Service {
         mOldTxBytes=TrafficStats.getMobileTxBytes();
         dao=new TrafficDao(this);
         mSp=getSharedPreferences("config",MODE_PRIVATE);
+        usedFlow=mSp.getLong("useflow",0);
         mThread.start();
     }
 

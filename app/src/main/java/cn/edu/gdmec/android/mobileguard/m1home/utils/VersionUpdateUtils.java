@@ -40,7 +40,7 @@ public class VersionUpdateUtils {
     private String mVersion;
     private Activity context;
     private VersionEntity versionEntity;
-    private ProgressDialog mProgressDialog;
+
 
 
     private BroadcastReceiver broadcastReceiver;
@@ -135,7 +135,7 @@ public class VersionUpdateUtils {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                    downloadNewApk(versionEntity.apkurl);
-                    enterHome();
+                   // enterHome();
                 }
             });
             builder.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {

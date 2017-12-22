@@ -73,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(CacheClearListActivity.class);
                         break;
                     case 6:
-                        startActivity(OperatorSetActivity.class);
+                        startActivity(TrafficMonitoringActivity.class);
                         break;
                     case 7:
                         startActivity(AdvancedToolsActivity.class);

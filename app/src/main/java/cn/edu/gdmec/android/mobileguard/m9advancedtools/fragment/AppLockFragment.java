@@ -1,20 +1,22 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
-import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -25,6 +27,7 @@ import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.AppInfoParser;
+import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.utils.SystemInfoUtils;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.adapter.AppLockAdapter;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
 
@@ -36,6 +39,7 @@ public class AppLockFragment extends Fragment {
     private Context context;
     private TextView mLockTV;
     private ListView mLockLV;
+    private CheckBox mLockCB;
     private AppLockDao dao;
     List<AppInfo> mLockApps=new ArrayList<AppInfo>();
     private AppLockAdapter adapter;
@@ -66,10 +70,27 @@ public class AppLockFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_app_lock,null);
         mLockTV=(TextView)view.findViewById(R.id.tv_lock);
         mLockLV=(ListView)view.findViewById(R.id.lv_lock);
+        mLockCB=(CheckBox)view.findViewById(R.id.cb_applock_service);
+        boolean running= SystemInfoUtils.isServiceRunning(context,"cn.edu.gdmec.t00385.android2016.myguard.m9advancedtools.service.AppLockService");
+        mLockCB.setChecked(running);
+        mLockCB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+               final Intent intent=new Intent();
+                ComponentName componentName=new ComponentName("cn.edu.gdmec.android.mobileguard",
+                        "cn.edu.gdmec.android.mobileguard.m9advancedtools.service.AppLockService");
+                intent.setComponent(componentName);
+                if(b){
+                    context.startService(intent);
+                }else {
+                    context.stopService(intent);
+                }
+            }
+        });
         return view;
     }
 

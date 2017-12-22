@@ -25,14 +25,15 @@ public class MyUtils {
             return "";
         }
     }
-}
-   /* public static void installApk(Activity activity,String apkFile){
+    public static void installApk(Activity activity,String apkFile){
         Intent intent=new Intent(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         intent.setDataAndType(Uri.fromFile(
                 new File(Environment.getExternalStoragePublicDirectory(
-                        "/download").getPath()+"/"+
-                apkFile)),"application/vnd.android package-archive");
+                        "/download/").getPath()+"/"+
+                        apkFile)),"application/vnd.android package-archive");
         activity.startActivityForResult(intent,0);
     }
+}
+   /*
 }*/

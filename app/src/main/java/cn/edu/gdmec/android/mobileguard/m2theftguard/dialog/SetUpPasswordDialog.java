@@ -17,22 +17,6 @@ import cn.edu.gdmec.android.mobileguard.R;
  */
 
 public class SetUpPasswordDialog extends Dialog implements View.OnClickListener {
-    /**
-     * Creates a dialog window that uses the default dialog theme.
-     * <p>
-     * The supplied {@code context} is used to obtain the window manager and
-     * base theme used to present the dialog.
-     *
-     * @param context the context in which the dialog should run
-     * @see android.R.styleable#Theme_dialogTheme
-     */
-
-
-    /**
-     * Called when a view has been clicked.
-     *
-     * @param v The view that was clicked.
-     */
     /**标题栏*/
     private TextView mTitleTV;
     /**首次输入密码文本框*/

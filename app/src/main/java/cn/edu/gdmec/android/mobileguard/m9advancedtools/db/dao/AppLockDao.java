@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.edu.gdmec.android.mobileguard.App;
+import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.AppLockOpenHelper;
 
 /**
- * Created by Administrator on 2017/12/14.
+ * Created by Administrator on 2017/12/21.
  */
 
 public class AppLockDao {
@@ -20,27 +21,26 @@ public class AppLockDao {
     private AppLockOpenHelper openHelper;
     private Uri uri=Uri.parse(App.APPLOCK_CONTENT_URI);
 
-    public AppLockDao(Context context){
+    public  AppLockDao(Context context){
         this.context=context;
         openHelper=new AppLockOpenHelper(context);
     }
     public boolean insert(String packagename){
         SQLiteDatabase db=openHelper.getWritableDatabase();
         ContentValues values=new ContentValues();
-        values.put("packgename",packagename);
+        values.put("packagename",packagename);
         long rowid=db.insert("applock",null,values);
         if(rowid==-1)
             return  false;
-            else{
-                context.getContentResolver().notifyChange(uri,null);
-                return true;
-
+        else{
+            context.getContentResolver().notifyChange(uri,null);
+            return  true;
         }
     }
     public boolean delete(String packagename){
         SQLiteDatabase db=openHelper.getWritableDatabase();
         int rownum=db.delete("applock","packagename=?",
-                new String[]{packagename});
+                new String[] {packagename});
         if(rownum==0){
             return false;
         }else{
@@ -51,10 +51,9 @@ public class AppLockDao {
     public boolean find(String packagename){
         SQLiteDatabase db=openHelper.getReadableDatabase();
         Cursor cursor=db.query("applock",null,"packagename=?",
-                new String[]{packagename},null,null,null);
+                new String[] {packagename},null,null,null);
         if(cursor.moveToNext()){
             cursor.close();
-            db.close();
             return true;
         }else{
             cursor.close();
@@ -68,7 +67,6 @@ public class AppLockDao {
         while (cursor.moveToNext()){
             String string=cursor.getString(cursor.getColumnIndex("packagename"));
             packages.add(string);
-
         }
         return packages;
     }
