@@ -59,6 +59,7 @@ public class AppLockFragment extends Fragment {
                     mLockTV.setText("加锁应用"+mLockApps.size()+"个");
                     break;
             }
+            //ddd
         };
     };
     private List<AppInfo> appInfos;
