@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_splash);
         mVersion= MyUtils.getVersion(getApplicationContext());
-        mTvVersion=(TextView)findViewById(R.id.tv_spalsh_version);
+        mTvVersion=(TextView)findViewById(R.id.tv_splash_version);
         mTvVersion.setText("版本号:"+mVersion);
         if(!hasPermission()){
             startActivityForResult(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS),MY_PERMISSIONS_REQUEST_PACKAGE_USAGE_STATS);

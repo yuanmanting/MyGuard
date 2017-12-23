@@ -16,16 +16,15 @@
         <TextView
             android:id="@+id/tv_scan_version"
             style="@style/textview16sp"
-            android:layout_alignParentBottom="true"
+            android:layout_above="@+id/tv_lastscantime"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="30dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:text="病毒数据库版本："/>
         <TextView
             android:id="@+id/tv_lastscantime"
             style="@style/textview16sp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
             android:textColor="@color/white"/>
     </RelativeLayout>
 
@@ -77,7 +76,8 @@
             style="@style/wrapcontent"
             android:src="@drawable/quickscan_icon"
             android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"/>
         <TextView
             android:id="@+id/tv_cloudscan"
             style="@style/textview16sp"
