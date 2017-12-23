@@ -75,7 +75,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onScrollStateChanged(AbsListView absListView, int i) {
                 switch (i){
-                    case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
+                    case AbsListView.OnScrollListener.SCROLL_STATE_FLING:
                     //case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
                    //case AbsListView.OnScrollListener.SCROLL_STATE_FLING:
                     //新增的
@@ -104,11 +104,8 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //新增加的
-       // requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_security_phone);
         getSupportActionBar().hide();
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_security_phone);
         initView();
         fillData();
     }

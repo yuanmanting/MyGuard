@@ -56,7 +56,7 @@ public class SmsLostFindReceiver extends BroadcastReceiver{
                         context.startService(service);
                         abortBroadcast();
                     } else if ("#*alarm*#".equals(body)) {
-                        Log.i(TAG, "播放背景音乐.");
+                        Log.i(TAG, "播放报警音乐.");
                         MediaPlayer player = MediaPlayer.create(context, R.raw.ylzs);
                         player.setVolume(1.0f, 1.0f);
                         player.start();
