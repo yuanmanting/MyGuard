@@ -54,6 +54,7 @@ public class AppLockDao {
                 new String[] {packagename},null,null,null);
         if(cursor.moveToNext()){
             cursor.close();
+            db.close();
             return true;
         }else{
             cursor.close();

@@ -16,7 +16,7 @@ public class NumBelongtoDao {
 
         SQLiteDatabase db=SQLiteDatabase.openDatabase(dbname,null,SQLiteDatabase.OPEN_READONLY);
         if(phonenumber.matches("^1[34578]\\d{9}$")){
-            Cursor cursor=db.rawQuery("select location from data2 where id=(select from data1 where id=?) ",new String[]{phonenumber.substring(0,7)});
+            Cursor cursor=db.rawQuery("select location from data2 where id=(select outkey from data1 where id=?) ",new String[]{phonenumber.substring(0,7)});
             if(cursor.moveToNext()){
                 location=cursor.getString(0);
             }
