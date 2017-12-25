@@ -133,7 +133,7 @@ public class AppManagerAdapter extends BaseAdapter{
 
         tv.setTextColor(ContextCompat.getColor(context,R.color.black));
         return tv;
-
+//dhh
 
 
 }
