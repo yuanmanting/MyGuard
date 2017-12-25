@@ -58,7 +58,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
             trafficMonitoringService.getUsedFlow();
             System.out.println("Usedflow:"+trafficMonitoringService.getUsedFlow());
         }
-//kjkll
+//kjkllmm
         @Override
         public void onServiceDisconnected(ComponentName name) {
 
