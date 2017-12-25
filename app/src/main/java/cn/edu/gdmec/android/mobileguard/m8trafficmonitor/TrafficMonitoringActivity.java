@@ -64,7 +64,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
 //dd
         }
     };
-
+//iojji
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
