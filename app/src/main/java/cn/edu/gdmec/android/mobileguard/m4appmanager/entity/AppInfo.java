@@ -24,7 +24,7 @@ public class AppInfo {
 //    是否选中，默认都为false
     public boolean isSelected=false;
     public String version;
-    public String InstallTime;
+    public long InstallTime;
     public String signature;
     public String permissions;
     //添加activity

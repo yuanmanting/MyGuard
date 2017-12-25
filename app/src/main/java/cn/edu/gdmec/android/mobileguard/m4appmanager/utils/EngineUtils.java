@@ -8,6 +8,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.widget.Toast;
 
+import java.util.Date;
+
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 
 /**
@@ -30,7 +32,7 @@ public class EngineUtils {
         if (intent !=null){
             context.startActivity(intent);
         }else{
-            Toast.makeText(context,"该应用没有启动界面",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"该应用没有启动界面",Toast.LENGTH_SHORT).show();
         }
     }
     public static void SettingAppDetail(Context context,AppInfo appInfo){
@@ -62,9 +64,8 @@ public class EngineUtils {
       final AlertDialog.Builder builder=new AlertDialog.Builder(context);
         builder.setTitle(appInfo.appName);
         builder.setMessage("Version:"+appInfo.version+
-                "\nInstall time:"+appInfo.InstallTime+
-                "\nCertificate issuer:"+appInfo.signature+
-                "\n\nPermissions:"+appInfo.permissions);
+                "\n"+"Install time:"+new Date(appInfo.InstallTime).toLocaleString()+"\n"+appInfo.signature+
+                "\n"+"Permissions:"+"\n"+appInfo.permissions);
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -76,7 +77,7 @@ public class EngineUtils {
 public static void getActivity(Context context,AppInfo appInfo){
     final AlertDialog.Builder builder=new AlertDialog.Builder(context);
     builder.setTitle(appInfo.appName);
-    builder.setMessage("ActivityInfo:"+appInfo.activityName);
+    builder.setMessage("Activities:"+"\n"+appInfo.activityName);
     builder.setPositiveButton("确定",new DialogInterface.OnClickListener(){
 
         @Override
