@@ -79,6 +79,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
             startService(new Intent(this, TrafficMonitoringService.class));
 
         }
+       bindService(new Intent(this,TrafficMonitoringService.class),conn,BIND_AUTO_CREATE);
         initView();
         registerReceiver();
         initData();
@@ -175,7 +176,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                 long used=0;
                 long beyond=0;
                 for(int i=0;i<split.length;i++){
-                    if(split[i].contains("当前常用流量已用")){
+                    if(split[i].contains("当月常用流量已用")){
                         String usedflow=split[i].substring(9,split[i].length());
                         used=getStringTofloat(usedflow);
 

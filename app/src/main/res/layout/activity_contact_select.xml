@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:cacheColorHint="#00000000"
         android:divider="#FFFFFF"
-        android:dividerHeight="1dp"/>
+        android:dividerHeight="3dp"/>
 
 
 </LinearLayout>

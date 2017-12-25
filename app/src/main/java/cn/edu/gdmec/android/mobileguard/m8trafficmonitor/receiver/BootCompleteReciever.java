@@ -12,9 +12,6 @@ public class BootCompleteReciever extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        // TODO: This method is called when the BroadcastReceiver is receiving
-        // an Intent broadcast.
-       // throw new UnsupportedOperationException("Not yet implemented");
         //开机广播
         //判断流量监控服务是否开启，如果没开启则开启
         if (!SystemInfoUtils.isServiceRunning(context,
