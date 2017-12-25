@@ -129,7 +129,7 @@ public class AppManagerAdapter extends BaseAdapter{
         DensityUtil.dip2px(context,5),
         DensityUtil.dip2px(context,5),
         DensityUtil.dip2px(context,5));
-        DensityUtil.dip2px(context,5);
+
 
         tv.setTextColor(ContextCompat.getColor(context,R.color.black));
         return tv;
